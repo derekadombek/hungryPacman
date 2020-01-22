@@ -1,12 +1,25 @@
-canvas {
+.canvas {
     border: 1px solid #d3d3d3;
-    background-color: #f1f1f1;
-    margin-left: 36%;
+    background-color: #757575;
+    margin-left: 20%;
     
+    float: left;
+    
+   
+
+}
+
+
+
+h1 {
+    margin-left: 46%;
+    padding-top: 10%;
     
 }
 
 p {
-    margin-left: 46%;
-    padding-top: 10%;
+    margin-left: 37%;
+    
 }
+
+ 
