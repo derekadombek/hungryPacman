@@ -4,7 +4,7 @@
 var canvas = document.getElementById("canvas");
 var ctx = canvas.getContext("2d");
 canvas.width = 720;
-canvas.height = 800;
+canvas.height = 650;
 document.body.appendChild(canvas);
 
 // background image
@@ -62,15 +62,15 @@ addEventListener("keyup", function (e) {
 // reset the game when pac eats cherry
 var reset = function () {
 	
-	pacman.x = 32 + (Math.random() * (canvas.width - 140));
-	pacman.y = 32 + (Math.random() * (canvas.height - 600));
+	pacman.x = 32 + (Math.random() * (canvas.width - 50));
+	pacman.y = 32 + (Math.random() * (canvas.height - 225));
 
 	// place cherry rendomly on canvas
-	cherry.x = 32 + (Math.random() * (canvas.width - 140));
-	cherry.y = 32 + (Math.random() * (canvas.height - 600));
+	cherry.x = 32 + (Math.random() * (canvas.width - 50));
+	cherry.y = 32 + (Math.random() * (canvas.height - 225));
 
 	back.x = (canvas.width - 50 );
-	back.y = (canvas.height - 375);
+	back.y = (canvas.height - 225);
 	back.t = (canvas.top);
 	
 };
@@ -127,11 +127,11 @@ var render = function () {
 	ctx.textAlign = "left";
 	ctx.textBaseline = "bottom";
 	ctx.fillText("Cherries: " + cherryCaught, 10, 50);
-	ctx.fillText("Instructions:", 10, 700);
-	ctx.fillText("-up and down", 10, 725);
-	ctx.fillText("-side to side", 10, 745);
-	ctx.fillText("-any diagonal", 10, 765);
-	ctx.fillText("-eat as many cherries as you can!", 10, 785);
+	ctx.fillText("Instructions:", 10, 525);
+	ctx.fillText("-up and down", 10, 545);
+	ctx.fillText("-side to side", 10, 565);
+	ctx.fillText("-any diagonal", 10, 585);
+	ctx.fillText("-eat as many cherries as you can!", 10, 605);
 };
 
 //main game loop
