@@ -3,7 +3,7 @@
 //the canvas
 var canvas = document.getElementById("canvas");
 var ctx = canvas.getContext("2d");
-canvas.width = 820;
+canvas.width = 720;
 canvas.height = 800;
 document.body.appendChild(canvas);
 
@@ -13,7 +13,9 @@ var bgImage = new Image();
 bgImage.onload = function () {
 	bgReady = true;
 };
-bgImage.className = "canvas"
+bgImage.src = "background.png";
+
+
 
 //pacman image
 var pacReady = false;
@@ -22,6 +24,7 @@ pacImage.onload = function () {
 	pacReady = true;
 };
 pacImage.src = "pacman.png";
+
 
 //cherry image
 var cherryReady = false;
@@ -37,12 +40,19 @@ var pacman = {
 };
 var cherry = {};
 var cherryCaught = 0;
+var back = {};
+
+//collision detection
 
 // keyboard controls
 var keysDown = {};
 
 addEventListener("keydown", function (e) {
 	keysDown[e.keyCode] = true;
+}, false);
+
+addEventListener("keystop", function (e) {
+		keysDown[e.keyCode] = false;
 }, false);
 
 addEventListener("keyup", function (e) {
@@ -52,12 +62,17 @@ addEventListener("keyup", function (e) {
 // reset the game when pac eats cherry
 var reset = function () {
 	
-	pacman.x = 32 + (Math.random() * (canvas.width - 64));
-	pacman.y = 32 + (Math.random() * (canvas.height - 400));
+	pacman.x = 32 + (Math.random() * (canvas.width - 140));
+	pacman.y = 32 + (Math.random() * (canvas.height - 600));
 
 	// place cherry rendomly on canvas
-	cherry.x = 32 + (Math.random() * (canvas.width - 64));
-	cherry.y = 32 + (Math.random() * (canvas.height - 400));
+	cherry.x = 32 + (Math.random() * (canvas.width - 140));
+	cherry.y = 32 + (Math.random() * (canvas.height - 600));
+
+	back.x = (canvas.width - 50 );
+	back.y = (canvas.height - 375);
+	back.t = (canvas.top);
+	
 };
 
 //key controls
@@ -85,6 +100,12 @@ var update = function (modifier) {
 		++cherryCaught;
 		reset();
 	}
+
+	if (pacman.x >= back.x || pacman.y >= back.y || pacman.y <= back.t)
+	{
+		reset();
+	}
+
 };
 
 // rendern everything
@@ -131,6 +152,7 @@ var main = function () {
 var then = Date.now();
 reset();
 main();
+collision();
 
 
 
